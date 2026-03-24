@@ -54,6 +54,16 @@ def run_daily_pipeline(target_date: date = None) -> dict:
     else:
         log.warning("No ODDS_API_KEY set.")
 
+    # Deduplicate games (scoreboard sometimes returns dupes)
+    seen = set()
+    unique_games = []
+    for g in games:
+        key = (g["home_team"], g["away_team"])
+        if key not in seen:
+            seen.add(key)
+            unique_games.append(g)
+    games = unique_games
+
     # Step 3: Match games with odds
     log.info("Step 3: Matching games with odds...")
     matched = _match_games_with_odds(games, odds_data)
@@ -221,9 +231,18 @@ def _rolling_from_gamelog(gl: pd.DataFrame, prefix: str) -> dict:
             f"{prefix}_roll_blk": 5,
         }
 
+    # Estimate pts_against from win/loss margin
+    # TeamGameLog doesn't have PLUS_MINUS, so we estimate from W/L and PTS
+    pts_for = gl["PTS"].mean()
+    # Use win pct to estimate average margin, then derive pts_against
+    win_pct = (gl["WL"] == "W").mean() if "WL" in gl.columns else 0.5
+    # Average NBA margin for a team with this win_pct (rough estimate)
+    avg_margin = (win_pct - 0.5) * 20  # ~+10 for 100% win, ~-10 for 0%
+    pts_against = pts_for - avg_margin
+
     return {
-        f"{prefix}_roll_pts_for": gl["PTS"].mean(),
-        f"{prefix}_roll_pts_against": gl["PTS"].mean() - gl["PLUS_MINUS"].mean(),
+        f"{prefix}_roll_pts_for": pts_for,
+        f"{prefix}_roll_pts_against": pts_against,
         f"{prefix}_roll_fg_pct": gl["FG_PCT"].mean(),
         f"{prefix}_roll_fg3_pct": gl["FG3_PCT"].mean(),
         f"{prefix}_roll_ft_pct": gl["FT_PCT"].mean(),
@@ -236,17 +255,20 @@ def _rolling_from_gamelog(gl: pd.DataFrame, prefix: str) -> dict:
     }
 
 
-def _parse_streak(streak_str: str) -> int:
-    """Parse streak string like 'W 3' or 'L 2' to signed int."""
-    if not streak_str:
+def _parse_streak(streak_val) -> int:
+    """Parse streak value to signed int. Handles string 'W 3' / 'L 2' or numeric."""
+    if not streak_val:
         return 0
-    parts = streak_str.strip().split()
-    if len(parts) != 2:
-        return 0
+    if isinstance(streak_val, (int, float)):
+        return int(streak_val)
     try:
-        n = int(parts[1])
-        return n if parts[0] == "W" else -n
-    except ValueError:
+        streak_str = str(streak_val).strip()
+        parts = streak_str.split()
+        if len(parts) == 2:
+            n = int(parts[1])
+            return n if parts[0] == "W" else -n
+        return int(streak_str)
+    except (ValueError, AttributeError):
         return 0
 
 

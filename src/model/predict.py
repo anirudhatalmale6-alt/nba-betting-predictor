@@ -70,8 +70,11 @@ def generate_spread_predictions(games: list[dict], model=None, metadata=None) ->
     if not games:
         return pd.DataFrame()
 
-    feature_cols = metadata.get("features", [c for c in SPREAD_FEATURES if c in games[0]])
-    available_cols = [c for c in feature_cols if c in games[0]]
+    # Use only features the model was trained on
+    trained_features = metadata.get("features", [])
+    available_cols = [c for c in trained_features if c in games[0]]
+    if not available_cols:
+        available_cols = [c for c in SPREAD_FEATURES if c in games[0] and c != "spread_points"]
 
     df = pd.DataFrame(games)
     X = df[available_cols].fillna(0)

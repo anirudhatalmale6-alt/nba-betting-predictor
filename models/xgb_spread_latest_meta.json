@@ -47,7 +47,6 @@
     "diff_win_pct",
     "diff_rest_days",
     "diff_streak",
-    "spread_points",
     "underdog_is_home"
   ]
 }
