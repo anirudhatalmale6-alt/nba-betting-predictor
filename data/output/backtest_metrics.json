@@ -1,0 +1,80 @@
+{
+  "moneyline": {
+    "overall_accuracy": 0.6132,
+    "n_games": 4755,
+    "per_season": {
+      "2022": {
+        "n_games": 1230,
+        "accuracy": 0.5927,
+        "pick_rate": 0.4447
+      },
+      "2023": {
+        "n_games": 1230,
+        "accuracy": 0.6163,
+        "pick_rate": 0.3724
+      },
+      "2024": {
+        "n_games": 1225,
+        "accuracy": 0.6261,
+        "pick_rate": 0.3641
+      },
+      "2025": {
+        "n_games": 1070,
+        "accuracy": 0.6187,
+        "pick_rate": 0.3654
+      }
+    }
+  },
+  "spread": {
+    "overall_accuracy": 0.6067,
+    "n_games": 4755,
+    "per_season": {
+      "2022": {
+        "n_games": 1230,
+        "accuracy": 0.587,
+        "pick_rate": 0.4504
+      },
+      "2023": {
+        "n_games": 1230,
+        "accuracy": 0.6016,
+        "pick_rate": 0.3789
+      },
+      "2024": {
+        "n_games": 1225,
+        "accuracy": 0.6114,
+        "pick_rate": 0.3624
+      },
+      "2025": {
+        "n_games": 1070,
+        "accuracy": 0.6299,
+        "pick_rate": 0.3542
+      }
+    }
+  },
+  "total": {
+    "overall_accuracy": 0.5701,
+    "n_games": 4755,
+    "per_season": {
+      "2022": {
+        "n_games": 1230,
+        "accuracy": 0.5512,
+        "pick_rate": 0.7569
+      },
+      "2023": {
+        "n_games": 1230,
+        "accuracy": 0.574,
+        "pick_rate": 0.6699
+      },
+      "2024": {
+        "n_games": 1225,
+        "accuracy": 0.5902,
+        "pick_rate": 0.6286
+      },
+      "2025": {
+        "n_games": 1070,
+        "accuracy": 0.5645,
+        "pick_rate": 0.5776
+      }
+    }
+  }
+}
