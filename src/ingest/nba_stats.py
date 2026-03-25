@@ -25,6 +25,17 @@ log = get_logger(__name__)
 # Rate limit: nba_api recommends ~0.6s between requests
 API_DELAY = 0.6
 
+# Custom headers to avoid blocks from stats.nba.com on cloud IPs
+_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Referer": "https://www.nba.com/",
+    "Origin": "https://www.nba.com",
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-US,en;q=0.9",
+}
+
+MAX_RETRIES = 3
+
 
 def _delay():
     time.sleep(API_DELAY)
@@ -46,42 +57,49 @@ def get_todays_games(target_date: date = None) -> list[dict]:
 
     date_str = target_date.strftime("%Y-%m-%d")
 
-    try:
-        scoreboard = scoreboardv2.ScoreboardV2(
-            game_date=date_str,
-            league_id="00",
-        )
-        _delay()
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            scoreboard = scoreboardv2.ScoreboardV2(
+                game_date=date_str,
+                league_id="00",
+                headers=_HEADERS,
+                timeout=60,
+            )
+            _delay()
 
-        games_header = scoreboard.game_header.get_data_frame()
+            games_header = scoreboard.game_header.get_data_frame()
 
-        if games_header.empty:
-            log.info(f"No NBA games on {date_str}")
-            return []
+            if games_header.empty:
+                log.info(f"No NBA games on {date_str}")
+                return []
 
-        games = []
-        for _, row in games_header.iterrows():
-            home_id = row.get("HOME_TEAM_ID")
-            away_id = row.get("VISITOR_TEAM_ID")
-            home_abbrev = TEAM_ID_TO_ABBREV.get(home_id, "???")
-            away_abbrev = TEAM_ID_TO_ABBREV.get(away_id, "???")
+            games = []
+            for _, row in games_header.iterrows():
+                home_id = row.get("HOME_TEAM_ID")
+                away_id = row.get("VISITOR_TEAM_ID")
+                home_abbrev = TEAM_ID_TO_ABBREV.get(home_id, "???")
+                away_abbrev = TEAM_ID_TO_ABBREV.get(away_id, "???")
 
-            games.append({
-                "game_id": row.get("GAME_ID", ""),
-                "game_date": date_str,
-                "home_team": home_abbrev,
-                "away_team": away_abbrev,
-                "home_team_id": home_id,
-                "away_team_id": away_id,
-                "game_status": row.get("GAME_STATUS_TEXT", ""),
-            })
+                games.append({
+                    "game_id": row.get("GAME_ID", ""),
+                    "game_date": date_str,
+                    "home_team": home_abbrev,
+                    "away_team": away_abbrev,
+                    "home_team_id": home_id,
+                    "away_team_id": away_id,
+                    "game_status": row.get("GAME_STATUS_TEXT", ""),
+                })
 
-        log.info(f"Found {len(games)} NBA games on {date_str}")
-        return games
+            log.info(f"Found {len(games)} NBA games on {date_str}")
+            return games
 
-    except Exception as e:
-        log.error(f"Error fetching scoreboard for {date_str}: {e}")
-        return []
+        except Exception as e:
+            log.warning(f"Scoreboard attempt {attempt}/{MAX_RETRIES} failed: {e}")
+            if attempt < MAX_RETRIES:
+                time.sleep(5 * attempt)
+            else:
+                log.error(f"All {MAX_RETRIES} attempts failed for scoreboard {date_str}")
+                return []
 
 
 def get_team_game_log(team_id: int, season: str) -> pd.DataFrame:
@@ -89,18 +107,23 @@ def get_team_game_log(team_id: int, season: str) -> pd.DataFrame:
     Get a team's game log for a season.
     season format: "2024-25"
     """
-    try:
-        gl = teamgamelog.TeamGameLog(
-            team_id=team_id,
-            season=season,
-            season_type_all_star="Regular Season",
-        )
-        _delay()
-        df = gl.get_data_frames()[0]
-        return df
-    except Exception as e:
-        log.warning(f"Error fetching game log for team {team_id}: {e}")
-        return pd.DataFrame()
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            gl = teamgamelog.TeamGameLog(
+                team_id=team_id,
+                season=season,
+                season_type_all_star="Regular Season",
+                headers=_HEADERS,
+                timeout=60,
+            )
+            _delay()
+            df = gl.get_data_frames()[0]
+            return df
+        except Exception as e:
+            log.warning(f"Game log attempt {attempt}/{MAX_RETRIES} for team {team_id}: {e}")
+            if attempt < MAX_RETRIES:
+                time.sleep(5 * attempt)
+    return pd.DataFrame()
 
 
 def get_team_stats(team_id: int, season: str) -> dict:
@@ -114,6 +137,8 @@ def get_team_stats(team_id: int, season: str) -> dict:
             season=season,
             season_type_all_star="Regular Season",
             measure_type_detailed_defense="Base",
+            headers=_HEADERS,
+            timeout=60,
         )
         _delay()
 
@@ -160,6 +185,8 @@ def get_standings(season: str) -> dict:
             league_id="00",
             season=season,
             season_type="Regular Season",
+            headers=_HEADERS,
+            timeout=60,
         )
         _delay()
 
