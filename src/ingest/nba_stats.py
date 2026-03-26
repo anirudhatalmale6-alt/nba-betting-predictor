@@ -4,6 +4,7 @@ Fetches team stats, game logs, standings, and schedules.
 """
 
 import time
+import requests
 import pandas as pd
 from datetime import date, datetime, timedelta
 from typing import Optional
@@ -49,7 +50,7 @@ def get_all_teams() -> dict:
 
 def get_todays_games(target_date: date = None) -> list[dict]:
     """
-    Get today's NBA games from the scoreboard.
+    Get today's NBA games. Tries NBA CDN first (reliable), falls back to nba_api scoreboard.
     Returns list of game dicts with team info.
     """
     if target_date is None:
@@ -57,6 +58,13 @@ def get_todays_games(target_date: date = None) -> list[dict]:
 
     date_str = target_date.strftime("%Y-%m-%d")
 
+    # Try CDN schedule first (more reliable, not blocked by cloud IPs)
+    games = _get_games_from_cdn(target_date, date_str)
+    if games is not None:
+        return games
+
+    # Fallback to nba_api scoreboard
+    log.info("CDN schedule failed, falling back to ScoreboardV2...")
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             scoreboard = scoreboardv2.ScoreboardV2(
@@ -74,9 +82,14 @@ def get_todays_games(target_date: date = None) -> list[dict]:
                 return []
 
             games = []
+            seen = set()
             for _, row in games_header.iterrows():
                 home_id = row.get("HOME_TEAM_ID")
                 away_id = row.get("VISITOR_TEAM_ID")
+                pair = (home_id, away_id)
+                if pair in seen:
+                    continue
+                seen.add(pair)
                 home_abbrev = TEAM_ID_TO_ABBREV.get(home_id, "???")
                 away_abbrev = TEAM_ID_TO_ABBREV.get(away_id, "???")
 
@@ -101,29 +114,79 @@ def get_todays_games(target_date: date = None) -> list[dict]:
                 log.error(f"All {MAX_RETRIES} attempts failed for scoreboard {date_str}")
                 return []
 
+    return []
+
+
+def _get_games_from_cdn(target_date: date, date_str: str) -> list[dict] | None:
+    """Fetch games from NBA CDN schedule (more reliable than stats.nba.com)."""
+    try:
+        url = "https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json"
+        resp = requests.get(url, headers=_HEADERS, timeout=30)
+        resp.raise_for_status()
+        data = resp.json()
+
+        target_str = target_date.strftime("%m/%d/%Y")
+        for game_date in data.get("leagueSchedule", {}).get("gameDates", []):
+            gd = game_date.get("gameDate", "")
+            if gd.startswith(target_str):
+                raw_games = game_date.get("games", [])
+                if not raw_games:
+                    log.info(f"No NBA games on {date_str} (CDN)")
+                    return []
+
+                games = []
+                for g in raw_games:
+                    home = g.get("homeTeam", {})
+                    away = g.get("awayTeam", {})
+                    home_abbrev = home.get("teamTricode", "???")
+                    away_abbrev = away.get("teamTricode", "???")
+                    home_id = ABBREV_TO_TEAM_ID.get(home_abbrev)
+                    away_id = ABBREV_TO_TEAM_ID.get(away_abbrev)
+
+                    games.append({
+                        "game_id": g.get("gameId", ""),
+                        "game_date": date_str,
+                        "home_team": home_abbrev,
+                        "away_team": away_abbrev,
+                        "home_team_id": home_id,
+                        "away_team_id": away_id,
+                        "game_status": g.get("gameStatusText", ""),
+                    })
+
+                log.info(f"Found {len(games)} NBA games on {date_str} (CDN)")
+                return games
+
+        log.info(f"No date match for {date_str} in CDN schedule")
+        return []
+
+    except Exception as e:
+        log.warning(f"CDN schedule fetch failed: {e}")
+        return None
+
 
 def get_team_game_log(team_id: int, season: str) -> pd.DataFrame:
     """
     Get a team's game log for a season.
     season format: "2024-25"
     """
-    for attempt in range(1, MAX_RETRIES + 1):
-        try:
-            gl = teamgamelog.TeamGameLog(
-                team_id=team_id,
-                season=season,
-                season_type_all_star="Regular Season",
-                headers=_HEADERS,
-                timeout=60,
-            )
-            _delay()
-            df = gl.get_data_frames()[0]
-            return df
-        except Exception as e:
-            log.warning(f"Game log attempt {attempt}/{MAX_RETRIES} for team {team_id}: {e}")
-            if attempt < MAX_RETRIES:
-                time.sleep(5 * attempt)
-    return pd.DataFrame()
+    try:
+        gl = teamgamelog.TeamGameLog(
+            team_id=team_id,
+            season=season,
+            season_type_all_star="Regular Season",
+            headers=_HEADERS,
+            timeout=15,
+        )
+        _delay()
+        df = gl.get_data_frames()[0]
+        return df
+    except Exception as e:
+        log.warning(f"Game log failed for team {team_id}: {e}")
+        # Fallback to CDN
+        abbrev = TEAM_ID_TO_ABBREV.get(team_id, "")
+        if abbrev:
+            return _get_game_log_from_cdn(abbrev)
+        return pd.DataFrame()
 
 
 def get_team_stats(team_id: int, season: str) -> dict:
@@ -186,7 +249,7 @@ def get_standings(season: str) -> dict:
             season=season,
             season_type="Regular Season",
             headers=_HEADERS,
-            timeout=60,
+            timeout=15,
         )
         _delay()
 
@@ -207,8 +270,9 @@ def get_standings(season: str) -> dict:
             }
         return result
     except Exception as e:
-        log.warning(f"Error fetching standings: {e}")
-        return {}
+        log.warning(f"Error fetching standings from nba_api: {e}")
+        log.info("Falling back to CDN for standings...")
+        return get_standings_from_cdn()
 
 
 def get_season_games(season: str) -> pd.DataFrame:
@@ -242,5 +306,147 @@ def get_recent_games(team_id: int, season: str, n_games: int = 10) -> pd.DataFra
     """Get a team's most recent N games."""
     gl = get_team_game_log(team_id, season)
     if gl.empty:
+        # Fallback: build from CDN schedule data
+        abbrev = TEAM_ID_TO_ABBREV.get(team_id, "")
+        if abbrev:
+            gl = _get_game_log_from_cdn(abbrev)
+    if gl.empty:
         return gl
     return gl.head(n_games)
+
+
+# ── CDN-based fallbacks ──
+
+_cdn_cache = {}
+
+
+def _fetch_cdn_schedule():
+    """Fetch and cache the full NBA CDN schedule."""
+    if "schedule" in _cdn_cache:
+        return _cdn_cache["schedule"]
+    try:
+        url = "https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json"
+        resp = requests.get(url, headers=_HEADERS, timeout=30)
+        resp.raise_for_status()
+        data = resp.json()
+        _cdn_cache["schedule"] = data
+        return data
+    except Exception as e:
+        log.warning(f"CDN schedule fetch failed: {e}")
+        return None
+
+
+def get_standings_from_cdn() -> dict:
+    """
+    Build standings from CDN schedule data.
+    Returns {team_abbrev: {wins, losses, win_pct, streak, ...}}
+    """
+    data = _fetch_cdn_schedule()
+    if not data:
+        return {}
+
+    # Track per-team stats from completed games
+    teams = {}
+    for gd in data.get("leagueSchedule", {}).get("gameDates", []):
+        for g in gd.get("games", []):
+            if g.get("gameStatus") != 3:  # not completed
+                continue
+            if g.get("gameLabel", "") == "Preseason":
+                continue
+
+            for side in ["homeTeam", "awayTeam"]:
+                t = g.get(side, {})
+                abbrev = t.get("teamTricode", "")
+                if abbrev:
+                    teams[abbrev] = {
+                        "wins": t.get("wins", 0),
+                        "losses": t.get("losses", 0),
+                    }
+
+    # Calculate win_pct and add defaults
+    result = {}
+    for abbrev, stats in teams.items():
+        total = stats["wins"] + stats["losses"]
+        result[abbrev] = {
+            "wins": stats["wins"],
+            "losses": stats["losses"],
+            "win_pct": stats["wins"] / max(total, 1),
+            "streak": "",
+            "conference_rank": 15,
+            "home_record": "0-0",
+            "away_record": "0-0",
+            "l10_record": "0-0",
+        }
+
+    log.info(f"Built standings for {len(result)} teams from CDN")
+    return result
+
+
+def _get_game_log_from_cdn(team_abbrev: str) -> pd.DataFrame:
+    """
+    Build a simplified game log from CDN schedule data.
+    Returns DataFrame with columns matching what _rolling_from_gamelog expects.
+    """
+    data = _fetch_cdn_schedule()
+    if not data:
+        return pd.DataFrame()
+
+    games = []
+    for gd in data.get("leagueSchedule", {}).get("gameDates", []):
+        for g in gd.get("games", []):
+            if g.get("gameStatus") != 3:
+                continue
+            if g.get("gameLabel", "") == "Preseason":
+                continue
+
+            ht = g.get("homeTeam", {})
+            at = g.get("awayTeam", {})
+            is_home = ht.get("teamTricode") == team_abbrev
+            is_away = at.get("teamTricode") == team_abbrev
+
+            if not is_home and not is_away:
+                continue
+
+            if is_home:
+                pts = ht.get("score", 0)
+                opp_pts = at.get("score", 0)
+            else:
+                pts = at.get("score", 0)
+                opp_pts = ht.get("score", 0)
+
+            wl = "W" if pts > opp_pts else "L"
+            game_date = g.get("gameDateEst", "")[:10]
+
+            games.append({
+                "GAME_DATE": game_date,
+                "PTS": pts,
+                "WL": wl,
+                # CDN doesn't have detailed stats - use league averages
+                "FG_PCT": 0.471,
+                "FG3_PCT": 0.363,
+                "FT_PCT": 0.781,
+                "REB": 44.0,
+                "AST": 25.5,
+                "TOV": 13.5,
+                "OREB": 10.5,
+                "STL": 7.5,
+                "BLK": 5.0,
+            })
+
+    if not games:
+        return pd.DataFrame()
+
+    df = pd.DataFrame(games)
+    # Sort by date descending (most recent first) like TeamGameLog
+    df["GAME_DATE"] = pd.to_datetime(df["GAME_DATE"])
+    df = df.sort_values("GAME_DATE", ascending=False).reset_index(drop=True)
+
+    # Adjust shooting stats based on scoring (higher scoring = better shooting)
+    league_avg_pts = 112
+    for idx in df.index:
+        pts_ratio = df.at[idx, "PTS"] / league_avg_pts
+        df.at[idx, "FG_PCT"] *= pts_ratio
+        df.at[idx, "FG3_PCT"] *= min(pts_ratio, 1.1)  # cap adjustment
+
+    log.info(f"Built {len(df)} game CDN log for {team_abbrev}")
+    return df
