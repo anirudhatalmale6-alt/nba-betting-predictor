@@ -1,6 +1,6 @@
 # NBA Betting Picks - Tuesday, March 31, 2026
 
-*Last updated: 2026-03-31 09:22 AM ET*
+*Last updated: 2026-03-31 03:17 PM ET*
 
 ## Moneyline Underdogs
 
@@ -8,7 +8,7 @@
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **POR** (POR @ LAC) | +183 | 49.6% | 14.3% | HIGH |
+| **POR** (POR @ LAC) | +185 | 49.6% | 14.6% | HIGH |
 
 ---
 
@@ -18,7 +18,7 @@
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **BKN** (CHA @ BKN) | +16.0 | 66.0% | 16.0% | HIGH |
+| **BKN** (CHA @ BKN) | +17.0 | 66.0% | 16.0% | HIGH |
 | **PHX** (PHX @ ORL) | +2.0 | 54.5% | 4.5% | MEDIUM |
 
 Other qualifying (5 - below threshold):
@@ -27,26 +27,23 @@ Other qualifying (5 - below threshold):
 - POR (POR @ LAC) | +5.5 | 45.6% | -4.4%
 - TOR (TOR @ DET) | +2.5 | 36.7% | -13.3%
 - MIL (DAL @ MIL) | +1.0 | 28.2% | -21.8%
-- CLE (CLE @ LAL) | +1.5 | 23.9% | -26.1%
+- CLE (CLE @ LAL) | +2.0 | 23.9% | -26.1%
 
 ---
 
 ## Totals (Over/Under)
 
-### Recommended Plays (6)
+### Recommended Plays (7)
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **OVER** (TOR @ DET) | 219.5 | 80.6% | 30.6% | HIGH |
-| **OVER** (CLE @ LAL) | 237.0 | 76.4% | 26.4% | HIGH |
-| **OVER** (POR @ LAC) | 227.0 | 73.0% | 23.0% | HIGH |
-| **OVER** (PHX @ ORL) | 225.0 | 70.6% | 20.6% | HIGH |
+| **OVER** (TOR @ DET) | 220.0 | 80.6% | 30.6% | HIGH |
+| **OVER** (CLE @ LAL) | 236.5 | 76.4% | 26.4% | HIGH |
+| **OVER** (POR @ LAC) | 227.5 | 73.0% | 23.0% | HIGH |
+| **OVER** (PHX @ ORL) | 224.5 | 70.6% | 20.6% | HIGH |
 | **OVER** (NYK @ HOU) | 217.5 | 67.5% | 17.5% | HIGH |
 | **UNDER** (CHA @ BKN) | 219.0 | 65.9% | 15.9% | HIGH |
-
-Other qualifying (1 - below threshold):
-
-- UNDER (DAL @ MIL) | 228.0 | 51.5% | 1.5%
+| **UNDER** (DAL @ MIL) | 228.5 | 57.6% | 7.6% | HIGH |
 
 ---
 
