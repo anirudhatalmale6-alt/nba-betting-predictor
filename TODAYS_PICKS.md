@@ -1,49 +1,58 @@
-# NBA Betting Picks - Tuesday, March 31, 2026
+# NBA Betting Picks - Wednesday, April 01, 2026
 
-*Last updated: 2026-03-31 03:17 PM ET*
+*Last updated: 2026-04-01 03:20 PM ET*
 
 ## Moneyline Underdogs
 
-### Recommended Plays (1)
+### Recommended Plays (3)
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **POR** (POR @ LAC) | +185 | 49.6% | 14.6% | HIGH |
+| **ORL** (ATL @ ORL) | +148 | 54.8% | 14.5% | HIGH |
+| **MIA** (BOS @ MIA) | +166 | 51.9% | 14.3% | HIGH |
+| **IND** (IND @ CHI) | +165 | 47.2% | 9.5% | MEDIUM |
 
 ---
 
 ## Spread (ATS) Picks
 
-### Recommended Plays (2)
+### Recommended Plays (7)
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **BKN** (CHA @ BKN) | +17.0 | 66.0% | 16.0% | HIGH |
-| **PHX** (PHX @ ORL) | +2.0 | 54.5% | 4.5% | MEDIUM |
+| **MEM** (NYK @ MEM) | +14.5 | 63.4% | 13.4% | HIGH |
+| **UTA** (DEN @ UTA) | +17.0 | 63.4% | 13.4% | HIGH |
+| **WAS** (PHI @ WAS) | +15.5 | 61.0% | 11.0% | HIGH |
+| **ORL** (ATL @ ORL) | +4.5 | 57.2% | 7.2% | HIGH |
+| **IND** (IND @ CHI) | +4.5 | 56.3% | 6.3% | HIGH |
+| **MIA** (BOS @ MIA) | +5.0 | 53.5% | 3.5% | LOW |
+| **GSW** (SAS @ GSW) | +13.5 | 52.6% | 2.6% | LOW |
 
-Other qualifying (5 - below threshold):
+Other qualifying (2 - below threshold):
 
-- HOU (NYK @ HOU) | +1.0 | 46.4% | -3.6%
-- POR (POR @ LAC) | +5.5 | 45.6% | -4.4%
-- TOR (TOR @ DET) | +2.5 | 36.7% | -13.3%
-- MIL (DAL @ MIL) | +1.0 | 28.2% | -21.8%
-- CLE (CLE @ LAL) | +2.0 | 23.9% | -26.1%
+- SAC (SAC @ TOR) | +13.5 | 26.1% | -23.9%
+- MIL (MIL @ HOU) | +17.5 | 24.7% | -25.3%
 
 ---
 
 ## Totals (Over/Under)
 
-### Recommended Plays (7)
+### Recommended Plays (8)
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **OVER** (TOR @ DET) | 220.0 | 80.6% | 30.6% | HIGH |
-| **OVER** (CLE @ LAL) | 236.5 | 76.4% | 26.4% | HIGH |
-| **OVER** (POR @ LAC) | 227.5 | 73.0% | 23.0% | HIGH |
-| **OVER** (PHX @ ORL) | 224.5 | 70.6% | 20.6% | HIGH |
-| **OVER** (NYK @ HOU) | 217.5 | 67.5% | 17.5% | HIGH |
-| **UNDER** (CHA @ BKN) | 219.0 | 65.9% | 15.9% | HIGH |
-| **UNDER** (DAL @ MIL) | 228.5 | 57.6% | 7.6% | HIGH |
+| **OVER** (DEN @ UTA) | 249.0 | 82.7% | 32.7% | HIGH |
+| **OVER** (IND @ CHI) | 248.5 | 77.7% | 27.7% | HIGH |
+| **OVER** (SAS @ GSW) | 226.5 | 72.1% | 22.1% | HIGH |
+| **OVER** (ATL @ ORL) | 232.5 | 59.7% | 9.7% | HIGH |
+| **OVER** (SAC @ TOR) | 226.5 | 58.4% | 8.3% | HIGH |
+| **OVER** (PHI @ WAS) | 240.5 | 53.2% | 3.2% | LOW |
+| **UNDER** (NYK @ MEM) | 228.0 | 52.7% | 2.7% | LOW |
+| **UNDER** (BOS @ MIA) | 228.5 | 52.3% | 2.3% | LOW |
+
+Other qualifying (1 - below threshold):
+
+- UNDER (MIL @ HOU) | 218.0 | 51.5% | 1.5%
 
 ---
 
