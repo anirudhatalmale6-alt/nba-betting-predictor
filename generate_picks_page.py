@@ -87,16 +87,8 @@ def generate_picks_page(target_date: date = None):
                 )
             lines.append("")
 
-        if others:
-            lines.append(f"Other qualifying ({len(others)} - below threshold):")
-            lines.append("")
-            for p in others:
-                prob = p.get("model_prob", 0)
-                prob_str = f"{prob:.1%}" if isinstance(prob, float) else str(prob)
-                lines.append(
-                    f"- {p.get('pick','')} ({p.get('away_team','')} @ {p.get('home_team','')}) "
-                    f"| {p.get('line','')} | {prob_str} | {p.get('edge_pct','')}"
-                )
+        if not recommended:
+            lines.append("No plays met the edge threshold today.")
             lines.append("")
 
         lines.append("---")

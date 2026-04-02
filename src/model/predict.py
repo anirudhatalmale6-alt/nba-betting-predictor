@@ -9,6 +9,7 @@ from datetime import date
 
 from config.settings import (
     EDGE_THRESHOLD_ML, EDGE_THRESHOLD_SPREAD, EDGE_THRESHOLD_TOTAL,
+    MAX_PICKS_PER_TYPE,
 )
 from src.features.builder import ML_FEATURES, SPREAD_FEATURES, TOTAL_FEATURES
 from src.model.registry import load_latest_model
@@ -59,7 +60,8 @@ def generate_ml_predictions(games: list[dict], model=None, metadata=None) -> pd.
             "recommended": edge >= EDGE_THRESHOLD_ML,
         })
 
-    return pd.DataFrame(results).sort_values("edge", ascending=False)
+    results_df = pd.DataFrame(results).sort_values("edge", ascending=False)
+    return _cap_picks(results_df)
 
 
 def generate_spread_predictions(games: list[dict], model=None, metadata=None) -> pd.DataFrame:
@@ -104,7 +106,8 @@ def generate_spread_predictions(games: list[dict], model=None, metadata=None) ->
             "recommended": edge >= EDGE_THRESHOLD_SPREAD,
         })
 
-    return pd.DataFrame(results).sort_values("edge", ascending=False)
+    results_df = pd.DataFrame(results).sort_values("edge", ascending=False)
+    return _cap_picks(results_df)
 
 
 def generate_total_predictions(games: list[dict], model=None, metadata=None) -> pd.DataFrame:
@@ -148,25 +151,41 @@ def generate_total_predictions(games: list[dict], model=None, metadata=None) -> 
             "recommended": edge >= EDGE_THRESHOLD_TOTAL,
         })
 
-    return pd.DataFrame(results).sort_values("edge", ascending=False)
+    results_df = pd.DataFrame(results).sort_values("edge", ascending=False)
+    return _cap_picks(results_df)
+
+
+def _cap_picks(df: pd.DataFrame) -> pd.DataFrame:
+    """Cap recommended picks to MAX_PICKS_PER_TYPE, keeping only highest edge."""
+    if df.empty:
+        return df
+    recommended = df[df["recommended"]].head(MAX_PICKS_PER_TYPE)
+    not_recommended = df[~df["recommended"]]
+    # Demote excess recommended picks
+    excess = df[df["recommended"]].iloc[MAX_PICKS_PER_TYPE:]
+    if not excess.empty:
+        excess = excess.copy()
+        excess["recommended"] = False
+        not_recommended = pd.concat([not_recommended, excess])
+    return pd.concat([recommended, not_recommended]).sort_values("edge", ascending=False)
 
 
 def _confidence_label(edge: float, bet_type: str) -> str:
     if bet_type == "ml":
-        if edge >= 0.10:
+        if edge >= 0.12:
             return "HIGH"
-        elif edge >= 0.05:
+        elif edge >= 0.10:
             return "MEDIUM"
         elif edge >= EDGE_THRESHOLD_ML:
             return "LOW"
         else:
             return "NO PLAY"
     else:
-        if edge >= 0.06:
+        if edge >= 0.10:
             return "HIGH"
-        elif edge >= 0.04:
+        elif edge >= 0.08:
             return "MEDIUM"
-        elif edge >= 0.02:
+        elif edge >= 0.06:
             return "LOW"
         else:
             return "NO PLAY"

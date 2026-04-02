@@ -38,9 +38,12 @@ MAX_ML_UNDERDOG_ODDS = int(os.getenv("MAX_ML_UNDERDOG_ODDS", "500"))
 # Totals: model picks over or under
 
 # ── Model Settings ───────────────────────────────────────────────────────
-EDGE_THRESHOLD_ML = float(os.getenv("EDGE_THRESHOLD_ML", "0.03"))
-EDGE_THRESHOLD_SPREAD = float(os.getenv("EDGE_THRESHOLD_SPREAD", "0.02"))
-EDGE_THRESHOLD_TOTAL = float(os.getenv("EDGE_THRESHOLD_TOTAL", "0.02"))
+EDGE_THRESHOLD_ML = float(os.getenv("EDGE_THRESHOLD_ML", "0.08"))
+EDGE_THRESHOLD_SPREAD = float(os.getenv("EDGE_THRESHOLD_SPREAD", "0.06"))
+EDGE_THRESHOLD_TOTAL = float(os.getenv("EDGE_THRESHOLD_TOTAL", "0.06"))
+
+# Maximum recommended picks per bet type per day
+MAX_PICKS_PER_TYPE = int(os.getenv("MAX_PICKS_PER_TYPE", "2"))
 
 # Training seasons for historical backtest
 HISTORICAL_SEASONS = list(range(2019, 2026))  # 2019-2025
