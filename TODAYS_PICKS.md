@@ -1,25 +1,16 @@
-# NBA Betting Picks - Friday, April 03, 2026
+# NBA Betting Picks - Saturday, April 04, 2026
 
-*Last updated: 2026-04-03 02:58 PM ET*
+*Last updated: 2026-04-04 02:43 PM ET*
 
 ## Moneyline Underdogs
 
-### Recommended Plays (1)
-
-| Pick | Line | Win Prob | Edge | Confidence |
-|------|------|----------|------|------------|
-| **DAL** (ORL @ DAL) | +218 | 51.1% | 19.7% | HIGH |
+No plays met the edge threshold today.
 
 ---
 
 ## Spread (ATS) Picks
 
-### Recommended Plays (2)
-
-| Pick | Line | Win Prob | Edge | Confidence |
-|------|------|----------|------|------------|
-| **MIL** (BOS @ MIL) | +17.5 | 62.7% | 12.7% | HIGH |
-| **BKN** (ATL @ BKN) | +16.5 | 60.8% | 10.8% | HIGH |
+No plays met the edge threshold today.
 
 ---
 
@@ -29,8 +20,8 @@
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **OVER** (IND @ CHA) | 234.5 | 62.7% | 12.7% | HIGH |
-| **UNDER** (NOP @ SAC) | 234.5 | 61.0% | 11.0% | HIGH |
+| **OVER** (SAS @ DEN) | 242.5 | 83.3% | 33.3% | HIGH |
+| **OVER** (DET @ PHI) | 226.5 | 70.3% | 20.3% | HIGH |
 
 ---
 
