@@ -1,6 +1,6 @@
-# NBA Betting Picks - Wednesday, April 08, 2026
+# NBA Betting Picks - Thursday, April 09, 2026
 
-*Last updated: 2026-04-08 03:25 PM ET*
+*Last updated: 2026-04-09 03:46 PM ET*
 
 ## Moneyline Underdogs
 
@@ -8,8 +8,8 @@
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **DAL** (DAL @ PHX) | +415 | 32.1% | 12.6% | HIGH |
-| **LAC** (OKC @ LAC) | +220 | 40.5% | 9.3% | LOW |
+| **WAS** (CHI @ WAS) | +210 | 49.0% | 16.7% | HIGH |
+| **LAL** (LAL @ GSW) | +155 | 51.2% | 12.0% | MEDIUM |
 
 ---
 
@@ -25,8 +25,8 @@ No plays met the edge threshold today.
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **OVER** (OKC @ LAC) | 226.5 | 74.8% | 24.7% | HIGH |
-| **OVER** (POR @ SAS) | 229.0 | 73.4% | 23.4% | HIGH |
+| **OVER** (PHI @ HOU) | 227.0 | 81.3% | 31.3% | HIGH |
+| **OVER** (MIA @ TOR) | 237.0 | 74.7% | 24.7% | HIGH |
 
 ---
 
