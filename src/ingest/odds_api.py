@@ -38,6 +38,18 @@ def fetch_nba_odds(markets: str = "h2h,spreads,totals") -> list[dict]:
     }
 
     resp = requests.get(url, params=params, timeout=30)
+
+    # Handle quota exhaustion gracefully
+    if resp.status_code in (401, 429):
+        remaining = resp.headers.get("x-requests-remaining", "0")
+        log.warning(f"Odds API quota exhausted (HTTP {resp.status_code}). Remaining: {remaining}. Trying cached snapshot...")
+        cached = load_latest_snapshot()
+        if cached:
+            log.info(f"  Using cached odds ({len(cached)} games)")
+            return cached
+        log.warning("  No cached snapshot available. Proceeding without odds.")
+        return []
+
     resp.raise_for_status()
 
     remaining = resp.headers.get("x-requests-remaining", "?")
@@ -183,3 +195,16 @@ def _parse_odds_response(data: list[dict]) -> list[dict]:
     log.info(f"Parsed {len(games)} games: {qualifying_ml} qualifying ML underdogs, "
              f"{with_spread} with spreads, {with_total} with totals")
     return games
+
+
+def load_latest_snapshot():
+    """Load the most recent odds snapshot from disk."""
+    snapshot_dir = RAW_DIR / "odds_api"
+    if not snapshot_dir.exists():
+        return None
+    files = sorted(snapshot_dir.glob("nba_odds_*.json"), reverse=True)
+    if not files:
+        return None
+    with open(files[0]) as f:
+        data = json.load(f)
+    return _parse_odds_response(data)
