@@ -1,7 +1,7 @@
-# NBA Betting Picks - Wednesday, April 15, 2026
+# NBA Betting Picks - Thursday, April 16, 2026
 
-*Last updated: 2026-04-15 06:51 PM ET*
+*Last updated: 2026-04-16 03:43 PM ET*
 
-## No Picks Today
+## No Games Today
 
-Games are scheduled but no picks met the model's criteria.
+No NBA games scheduled today.
