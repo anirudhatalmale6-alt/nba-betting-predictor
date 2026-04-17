@@ -1,0 +1,6 @@
+bet_type,game_date,home_team,away_team,pick,odds,line,model_prob,market_prob,edge,edge_pct,kelly,confidence,recommended
+MONEYLINE,2026-04-17,ORL,CHA,ORL,138,+138,0.4664,0.4202,0.0463,4.6%,0.0798,NO PLAY,False
+SPREAD,2026-04-17,PHX,GSW,GSW,-110,+3.5,0.4381,0.5,-0.0619,-6.2%,0.1438,NO PLAY,False
+SPREAD,2026-04-17,ORL,CHA,ORL,-110,+3.5,0.4309,0.5,-0.0691,-6.9%,0.1328,NO PLAY,False
+TOTAL,2026-04-17,PHX,GSW,OVER,-110,220.0,0.6247,0.5,0.1247,12.5%,0.4281,HIGH,True
+TOTAL,2026-04-17,ORL,CHA,OVER,-110,218.5,0.5325,0.5,0.0325,3.2%,0.2875,NO PLAY,False
