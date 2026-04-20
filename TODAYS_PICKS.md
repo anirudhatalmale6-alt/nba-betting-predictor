@@ -1,14 +1,10 @@
-# NBA Betting Picks - Sunday, April 19, 2026
+# NBA Betting Picks - Monday, April 20, 2026
 
-*Last updated: 2026-04-19 02:53 PM ET*
+*Last updated: 2026-04-20 03:24 PM ET*
 
 ## Moneyline Underdogs
 
-### Recommended Plays (1)
-
-| Pick | Line | Win Prob | Edge | Confidence |
-|------|------|----------|------|------------|
-| **ORL** (ORL @ DET) | +310 | 42.8% | 18.4% | HIGH |
+No plays met the edge threshold today.
 
 ---
 
@@ -24,8 +20,8 @@ No plays met the edge threshold today.
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **OVER** (ORL @ DET) | 219.5 | 76.5% | 26.5% | HIGH |
-| **OVER** (POR @ SAS) | 221.5 | 71.9% | 21.9% | HIGH |
+| **OVER** (TOR @ CLE) | 222.5 | 76.0% | 26.0% | HIGH |
+| **OVER** (MIN @ DEN) | 232.0 | 63.9% | 13.9% | HIGH |
 
 ---
 
