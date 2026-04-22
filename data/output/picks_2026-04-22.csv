@@ -1,0 +1,6 @@
+bet_type,game_date,home_team,away_team,pick,odds,line,model_prob,market_prob,edge,edge_pct,kelly,confidence,recommended
+MONEYLINE,2026-04-22,DET,ORL,ORL,310,+310,0.6139,0.2439,0.37,37.0%,0.4894,HIGH,True
+SPREAD,2026-04-22,DET,ORL,ORL,-110,+8.5,0.497,0.5,-0.003,-0.3%,0.2336,NO PLAY,False
+SPREAD,2026-04-22,OKC,PHX,PHX,-110,+17.0,0.1119,0.5,-0.3881,-38.8%,0.0,NO PLAY,False
+TOTAL,2026-04-22,DET,ORL,OVER,-110,218.5,0.6661,0.5,0.1661,16.6%,0.4911,HIGH,True
+TOTAL,2026-04-22,OKC,PHX,UNDER,-110,215.5,0.5146,0.5,0.0146,1.5%,0.2603,NO PLAY,False
