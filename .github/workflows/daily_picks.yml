@@ -2,8 +2,9 @@ name: Daily NBA Betting Picks
 
 on:
   schedule:
-    # Run at 10:00 AM ET (14:00 UTC) every day during NBA season (Oct-June)
-    - cron: '0 14 * 1-6,10-12 *'
+    # Run at 10:30 AM ET (14:30 UTC) every day during NBA season (Oct-June)
+    # Staggered 30min after MLB to avoid API quota conflicts
+    - cron: '30 14 * 1-6,10-12 *'
   workflow_dispatch:
 
 env:
