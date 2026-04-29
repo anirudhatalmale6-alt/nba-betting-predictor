@@ -1,10 +1,15 @@
-# NBA Betting Picks - Tuesday, April 28, 2026
+# NBA Betting Picks - Wednesday, April 29, 2026
 
-*Last updated: 2026-04-28 04:27 PM ET*
+*Last updated: 2026-04-29 04:17 PM ET*
 
 ## Moneyline Underdogs
 
-No plays met the edge threshold today.
+### Recommended Plays (2)
+
+| Pick | Line | Win Prob | Edge | Confidence |
+|------|------|----------|------|------------|
+| **ORL** (ORL @ DET) | +310 | 50.4% | 26.0% | HIGH |
+| **TOR** (TOR @ CLE) | +303 | 46.2% | 21.4% | HIGH |
 
 ---
 
@@ -20,8 +25,8 @@ No plays met the edge threshold today.
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **OVER** (ATL @ NYK) | 214.5 | 70.1% | 20.1% | HIGH |
-| **OVER** (POR @ SAS) | 216.5 | 61.7% | 11.7% | HIGH |
+| **OVER** (TOR @ CLE) | 218.0 | 73.8% | 23.8% | HIGH |
+| **OVER** (HOU @ LAL) | 208.5 | 58.4% | 8.4% | MEDIUM |
 
 ---
 
