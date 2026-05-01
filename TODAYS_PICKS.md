@@ -1,6 +1,6 @@
-# NBA Betting Picks - Thursday, April 30, 2026
+# NBA Betting Picks - Friday, May 01, 2026
 
-*Last updated: 2026-04-30 04:05 PM ET*
+*Last updated: 2026-05-01 03:35 PM ET*
 
 ## Moneyline Underdogs
 
@@ -8,17 +8,13 @@
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **PHI** (BOS @ PHI) | +195 | 57.0% | 23.1% | HIGH |
+| **TOR** (CLE @ TOR) | +158 | 48.9% | 10.2% | MEDIUM |
 
 ---
 
 ## Spread (ATS) Picks
 
-### Recommended Plays (1)
-
-| Pick | Line | Win Prob | Edge | Confidence |
-|------|------|----------|------|------------|
-| **PHI** (BOS @ PHI) | +6.5 | 57.4% | 7.4% | LOW |
+No plays met the edge threshold today.
 
 ---
 
@@ -28,8 +24,8 @@
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **OVER** (DEN @ MIN) | 224.5 | 74.4% | 24.4% | HIGH |
-| **UNDER** (BOS @ PHI) | 213.0 | 58.1% | 8.1% | MEDIUM |
+| **OVER** (CLE @ TOR) | 218.5 | 70.1% | 20.1% | HIGH |
+| **UNDER** (LAL @ HOU) | 205.5 | 65.1% | 15.1% | HIGH |
 
 ---
 
