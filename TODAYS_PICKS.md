@@ -1,15 +1,14 @@
-# NBA Betting Picks - Sunday, May 03, 2026
+# NBA Betting Picks - Monday, May 04, 2026
 
-*Last updated: 2026-05-03 03:12 PM ET*
+*Last updated: 2026-05-04 04:20 PM ET*
 
 ## Moneyline Underdogs
 
-### Recommended Plays (2)
+### Recommended Plays (1)
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **TOR** (TOR @ CLE) | +241 | 49.5% | 20.2% | HIGH |
-| **ORL** (ORL @ DET) | +260 | 42.0% | 14.2% | HIGH |
+| **MIN** (MIN @ SAS) | +400 | 40.9% | 20.9% | HIGH |
 
 ---
 
@@ -25,8 +24,8 @@ No plays met the edge threshold today.
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **OVER** (TOR @ CLE) | 211.5 | 74.9% | 24.9% | HIGH |
-| **UNDER** (ORL @ DET) | 202.0 | 61.2% | 11.2% | HIGH |
+| **OVER** (MIN @ SAS) | 218.0 | 80.8% | 30.9% | HIGH |
+| **UNDER** (PHI @ NYK) | 213.5 | 56.4% | 6.4% | LOW |
 
 ---
 
