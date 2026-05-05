@@ -1,0 +1,5 @@
+bet_type,game_date,home_team,away_team,pick,odds,line,model_prob,market_prob,edge,edge_pct,kelly,confidence,recommended
+SPREAD,2026-05-05,DET,CLE,CLE,-110,+3.0,0.3064,0.5,-0.1936,-19.4%,0.0,NO PLAY,False
+SPREAD,2026-05-05,OKC,LAL,LAL,-110,+15.5,0.1469,0.5,-0.3531,-35.3%,0.0,NO PLAY,False
+TOTAL,2026-05-05,OKC,LAL,UNDER,-110,214.0,0.5562,0.5,0.0562,5.6%,0.3237,NO PLAY,False
+TOTAL,2026-05-05,DET,CLE,UNDER,-110,216.0,0.5522,0.5,0.0522,5.2%,0.3176,NO PLAY,False

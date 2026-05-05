@@ -1,16 +1,6 @@
-# NBA Betting Picks - Monday, May 04, 2026
+# NBA Betting Picks - Tuesday, May 05, 2026
 
-*Last updated: 2026-05-04 04:20 PM ET*
-
-## Moneyline Underdogs
-
-### Recommended Plays (1)
-
-| Pick | Line | Win Prob | Edge | Confidence |
-|------|------|----------|------|------------|
-| **MIN** (MIN @ SAS) | +400 | 40.9% | 20.9% | HIGH |
-
----
+*Last updated: 2026-05-05 04:24 PM ET*
 
 ## Spread (ATS) Picks
 
@@ -20,12 +10,7 @@ No plays met the edge threshold today.
 
 ## Totals (Over/Under)
 
-### Recommended Plays (2)
-
-| Pick | Line | Win Prob | Edge | Confidence |
-|------|------|----------|------|------------|
-| **OVER** (MIN @ SAS) | 218.0 | 80.8% | 30.9% | HIGH |
-| **UNDER** (PHI @ NYK) | 213.5 | 56.4% | 6.4% | LOW |
+No plays met the edge threshold today.
 
 ---
 
