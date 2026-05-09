@@ -1,14 +1,15 @@
-# NBA Betting Picks - Friday, May 08, 2026
+# NBA Betting Picks - Saturday, May 09, 2026
 
-*Last updated: 2026-05-08 04:00 PM ET*
+*Last updated: 2026-05-09 03:32 PM ET*
 
 ## Moneyline Underdogs
 
-### Recommended Plays (1)
+### Recommended Plays (2)
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **MIN** (SAS @ MIN) | +170 | 46.1% | 9.1% | LOW |
+| **LAL** (OKC @ LAL) | +280 | 56.0% | 29.6% | HIGH |
+| **DET** (DET @ CLE) | +155 | 53.1% | 13.9% | HIGH |
 
 ---
 
@@ -18,7 +19,7 @@
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **NYK** (NYK @ PHI) | +1.5 | 62.6% | 12.6% | HIGH |
+| **LAL** (OKC @ LAL) | +8.5 | 56.4% | 6.4% | LOW |
 
 ---
 
@@ -28,8 +29,8 @@
 
 | Pick | Line | Win Prob | Edge | Confidence |
 |------|------|----------|------|------------|
-| **UNDER** (NYK @ PHI) | 214.5 | 71.2% | 21.2% | HIGH |
-| **OVER** (SAS @ MIN) | 216.5 | 69.5% | 19.5% | HIGH |
+| **UNDER** (OKC @ LAL) | 211.5 | 77.8% | 27.8% | HIGH |
+| **UNDER** (DET @ CLE) | 212.5 | 70.0% | 20.0% | HIGH |
 
 ---
 
