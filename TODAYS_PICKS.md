@@ -1,7 +1,7 @@
-# NBA Betting Picks - Thursday, May 14, 2026
+# NBA Betting Picks - Friday, May 15, 2026
 
-*Last updated: 2026-05-14 04:28 PM ET*
+*Last updated: 2026-05-15 04:24 PM ET*
 
-## No Games Today
+## No Picks Today
 
-No NBA games scheduled today.
+Games are scheduled but no picks met the model's criteria.
