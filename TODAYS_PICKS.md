@@ -1,7 +1,7 @@
-# NBA Betting Picks - Saturday, May 16, 2026
+# NBA Betting Picks - Sunday, May 17, 2026
 
-*Last updated: 2026-05-16 03:35 PM ET*
+*Last updated: 2026-05-17 03:39 PM ET*
 
-## No Games Today
+## No Picks Today
 
-No NBA games scheduled today.
+Games are scheduled but no picks met the model's criteria.
