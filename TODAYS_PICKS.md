@@ -1,6 +1,6 @@
-# NBA Betting Picks - Tuesday, May 19, 2026
+# NBA Betting Picks - Wednesday, May 20, 2026
 
-*Last updated: 2026-05-19 05:27 PM ET*
+*Last updated: 2026-05-20 05:42 PM ET*
 
 ## No Picks Today
 
