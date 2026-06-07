@@ -1,6 +1,6 @@
-# NBA Betting Picks - Saturday, June 06, 2026
+# NBA Betting Picks - Sunday, June 07, 2026
 
-*Last updated: 2026-06-06 03:52 PM ET*
+*Last updated: 2026-06-07 03:51 PM ET*
 
 ## No Games Today
 
