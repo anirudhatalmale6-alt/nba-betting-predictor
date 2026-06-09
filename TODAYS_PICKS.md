@@ -1,7 +1,7 @@
-# NBA Betting Picks - Monday, June 08, 2026
+# NBA Betting Picks - Tuesday, June 09, 2026
 
-*Last updated: 2026-06-08 05:35 PM ET*
+*Last updated: 2026-06-09 05:09 PM ET*
 
-## No Picks Today
+## No Games Today
 
-Games are scheduled but no picks met the model's criteria.
+No NBA games scheduled today.
