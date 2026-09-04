@@ -29,3 +29,6 @@ Picks update automatically every morning at 10:00 AM ET during the NBA season.
 ## Backtest
 
 Run the historical backtest: `python run_backtest.py`
+
+
+<!-- Security scan triggered at 2026-09-04 13:01:03 -->
