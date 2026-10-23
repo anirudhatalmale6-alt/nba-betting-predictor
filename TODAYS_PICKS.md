@@ -1,6 +1,6 @@
-# NBA Betting Picks - Thursday, October 22, 2026
+# NBA Betting Picks - Friday, October 23, 2026
 
-*Last updated: 2026-10-22 06:46 PM ET*
+*Last updated: 2026-10-23 06:40 PM ET*
 
 ## No Games Today
 
