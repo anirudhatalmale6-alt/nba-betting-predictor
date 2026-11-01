@@ -1,6 +1,6 @@
-# NBA Betting Picks - Saturday, October 31, 2026
+# NBA Betting Picks - Sunday, November 01, 2026
 
-*Last updated: 2026-10-31 06:44 PM ET*
+*Last updated: 2026-11-01 07:07 PM ET*
 
 ## No Games Today
 
