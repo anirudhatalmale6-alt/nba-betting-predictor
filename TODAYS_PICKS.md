@@ -1,6 +1,6 @@
-# NBA Betting Picks - Tuesday, November 24, 2026
+# NBA Betting Picks - Wednesday, November 25, 2026
 
-*Last updated: 2026-11-24 11:39 PM ET*
+*Last updated: 2026-11-25 11:16 PM ET*
 
 ## No Games Today
 
